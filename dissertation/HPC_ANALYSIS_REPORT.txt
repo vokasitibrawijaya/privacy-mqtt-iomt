@@ -1,0 +1,73 @@
+================================================================================
+HPC EXPERIMENT RESULTS - COMPREHENSIVE ANALYSIS
+================================================================================
+Generated: 2025-12-30 14:47:05
+Total Experiments: 3
+
+1. PRIVACY IMPROVEMENT SUMMARY
+--------------------------------------------------------------------------------
+Scale           Topic Gain      ClientID Gain   Status              
+--------------------------------------------------------------------------------
+N=100          5.00           x 5.00           x ✓ EXCELLENT         
+N=1000         5.00           x 5.00           x ✓ EXCELLENT         
+N=10000        5.00           x 5.00           x ✓ EXCELLENT         
+
+Average Topic Diversity Gain: 5.00x
+Average ClientID Diversity Gain: 5.00x
+
+2. PERFORMANCE OVERHEAD SUMMARY
+--------------------------------------------------------------------------------
+Scale           Latency (ms)    Overhead (ms)   Status              
+--------------------------------------------------------------------------------
+N=100          5.0083          0.0063          ✓ ACCEPTABLE        
+N=1000         5.0230          0.0200          ✓ ACCEPTABLE        
+N=10000        5.0672          0.0632          ✓ ACCEPTABLE        
+
+Average Latency Overhead: 0.0298 ms
+Clinical Threshold: 100 ms
+All Tests Within Threshold: True
+
+3. THROUGHPUT ANALYSIS
+--------------------------------------------------------------------------------
+Scale           Baseline (msg/s)     Privacy (msg/s)      Reduction %    
+--------------------------------------------------------------------------------
+N=100          166,667              91,667               45.0           
+N=1000         153,846              84,615               45.0           
+N=10000        142,857              78,571               45.0           
+
+Average Throughput Reduction: 45.0%
+
+4. COMPUTATIONAL OVERHEAD
+--------------------------------------------------------------------------------
+Average Computation Overhead: 2.50 μs
+Max Computation Overhead: 2.50 μs
+Min Computation Overhead: 2.50 μs
+
+5. BANDWIDTH OVERHEAD (OVERLAP)
+--------------------------------------------------------------------------------
+Average Overlap Duplication: 21.00%
+Max Overlap Duplication: 21.00%
+
+6. QoS VALIDATION
+--------------------------------------------------------------------------------
+Average Packet Loss: 0.0000%
+Max Packet Loss: 0.0000%
+All Tests Zero Packet Loss: True
+
+7. SCALABILITY ASSESSMENT
+--------------------------------------------------------------------------------
+Latency Scaling: log-linear fit
+  Slope: 0.0294 ms per 10x scale increase
+  R²: 0.9228
+  Projected latency at N=10,000: 5.06 ms
+
+8. OVERALL ASSESSMENT
+--------------------------------------------------------------------------------
+Verdict: ✓ PRODUCTION READY - All metrics within acceptable ranges
+
+Key Achievements:
+  ✓ Privacy improvement: 5.0x average
+  ✓ Latency overhead: 0.0298 ms average
+  ✓ QoS maintained: Yes
+
+================================================================================

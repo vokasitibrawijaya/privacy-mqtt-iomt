@@ -1,0 +1,37 @@
+# Python dependencies for Privacy-Aware MQTT IoMT Experiment
+# ===========================================================
+
+# MQTT Client
+paho-mqtt>=1.6.1,<2.0
+
+# Cryptography
+cryptography>=41.0.0
+
+# Async support
+asyncio-mqtt>=0.16.0
+
+# Data handling
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Metrics and statistics
+scipy>=1.10.0
+
+# Configuration
+python-dotenv>=1.0.0
+
+# Logging
+structlog>=23.0.0
+
+# JSON handling (already in stdlib, but for schema validation)
+jsonschema>=4.17.0
+
+# Performance profiling
+psutil>=5.9.0
+
+# Testing
+pytest>=7.3.0
+pytest-asyncio>=0.21.0
+
+# Type checking
+mypy>=1.3.0

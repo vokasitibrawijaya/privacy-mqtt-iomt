@@ -1,0 +1,89 @@
+# Docker Compose untuk Privacy-Aware MQTT IoMT Experiment
+# ========================================================
+# Infrastruktur: 1 Mosquitto Broker, Multiple Gateways, 1 Backend
+
+version: '3.8'
+
+services:
+  # MQTT Broker (Mosquitto)
+  mqtt-broker:
+    image: eclipse-mosquitto:2.0
+    container_name: mqtt_broker
+    ports:
+      - "1883:1883"   # MQTT
+      - "9001:9001"   # WebSocket (optional)
+    volumes:
+      - ./docker/mosquitto/config:/mosquitto/config
+      - ./docker/mosquitto/data:/mosquitto/data
+      - ./docker/mosquitto/log:/mosquitto/log
+    networks:
+      - mqtt_net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mosquitto_sub", "-t", "$$SYS/#", "-C", "1", "-i", "healthcheck", "-W", "3"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Backend Subscriber & Controller
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    container_name: backend_subscriber
+    depends_on:
+      mqtt-broker:
+        condition: service_healthy
+    environment:
+      - BROKER_HOST=mqtt-broker
+      - BROKER_PORT=1883
+      - BACKEND_ID=backend_main
+      - LOG_LEVEL=INFO
+      - OUTPUT_DIR=/data/results
+    volumes:
+      - ./data/results:/data/results
+      - ./data/keys:/data/keys
+    networks:
+      - mqtt_net
+    restart: unless-stopped
+
+  # Gateway Template (akan di-scale)
+  gateway:
+    build:
+      context: .
+      dockerfile: docker/gateway/Dockerfile
+    depends_on:
+      mqtt-broker:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    environment:
+      - BROKER_HOST=mqtt-broker
+      - BROKER_PORT=1883
+      - GATEWAY_ID=${GATEWAY_ID:-gateway_1}
+      - PATIENT_START=${PATIENT_START:-0}
+      - PATIENT_COUNT=${PATIENT_COUNT:-10}
+      - EPOCH_LENGTH=${EPOCH_LENGTH:-1800}
+      - OVERLAP_TIME=${OVERLAP_TIME:-60}
+      - ROTATION_TRIGGER=${ROTATION_TRIGGER:-time}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/keys:/data/keys
+      - ./data/results:/data/results
+    networks:
+      - mqtt_net
+    deploy:
+      replicas: ${NUM_GATEWAYS:-1}
+    restart: unless-stopped
+
+networks:
+  mqtt_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  mosquitto_data:
+  mosquitto_log:
+  results_data:
