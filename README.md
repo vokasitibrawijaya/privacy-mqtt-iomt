@@ -27,6 +27,34 @@ This repository contains the implementation and experiment framework for the res
 - **No broker modifications required**
 - Overlap phase mechanism for QoS guarantees
 
+## 🏗️ System Architecture
+
+![System Architecture](figures/figure_4_1_architecture.png)
+
+The architecture introduces a **Topic and ID Privacy Manager (TPM)** at the IoMT gateway, positioned between patient sensors and the MQTT broker. Key components:
+
+1. **Medical Sensors/WBAN**: Generate raw medical data (ECG, SpO2, blood pressure, etc.)
+2. **Gateway with TPM**: Aggregates sensor data, manages pseudonym mappings, implements rotation protocols
+3. **MQTT Broker**: Standard unmodified broker performing publish/subscribe routing
+4. **Backend Subscriber**: Consumes data via pseudo-topics, maintains reverse mappings
+
+## 📊 Experiment Results
+
+### Privacy Comparison
+![Privacy Metrics](figures/figure_4_3_privacy_comparison.png)
+
+### Latency Distribution
+![Latency Distribution](figures/figure_4_4_latency_distribution.png)
+
+### Throughput Comparison
+![Throughput Comparison](figures/figure_4_5_throughput_comparison.png)
+
+### Overhead Analysis
+![Overhead Breakdown](figures/figure_4_6_overhead_breakdown.png)
+
+### Scalability (5 to 10,000 patients)
+![Scalability Projection](figures/figure_scalability_projection.png)
+
 ## 📁 Project Structure
 
 ```
