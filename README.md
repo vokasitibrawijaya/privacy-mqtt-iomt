@@ -195,7 +195,7 @@ If you use this code in your research, please cite:
 ```bibtex
 @article{atmoko2026privacy,
   title={Privacy-Aware MQTT Protocol for Internet of Medical Things: A Gateway-Based Pseudonym Rotation Approach with Minimal Overhead},
-  author={Atmoko, Rachmad Andri and Asriningtias, Salnan Ratih and Setiawan, Akas Bagus},
+  author={Atmoko, Rachmad Andri and Asriningtias, Salnan Ratih and Setiawan, Akas Bagus and Pradhan, Devasis and Karas, Ismail Rakip},
   journal={Journal of Robotics and Control (JRC)},
   volume={X},
   number={X},
@@ -221,6 +221,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Rachmad Andri Atmoko** - ra.atmoko@ub.ac.id
 - **Salnan Ratih Asriningtias** - salnan@ub.ac.id (Corresponding Author)
 - **Akas Bagus Setiawan** - akasbagus_s@polije.ac.id
+- **Devasis Pradhan** - devasispradhan@acharya.ac.in
+- **Ismail Rakip Karas** - ismail.karas@karabuk.edu.tr
 
 ---
 
