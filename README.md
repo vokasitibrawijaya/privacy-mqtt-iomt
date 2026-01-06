@@ -11,10 +11,12 @@ This repository contains the implementation and experiment framework for the res
 
 > **Privacy-Aware MQTT Protocol for Internet of Medical Things: A Gateway-Based Pseudonym Rotation Approach with Minimal Overhead**
 >
-> Rachmad Andri Atmoko¹, Salnan Ratih Asriningtias¹*, Akas Bagus Setiawan²
+> Rachmad Andri Atmoko¹, Salnan Ratih Asriningtias¹*, Akas Bagus Setiawan², Devasis Pradhan³, Ismail Rakip Karas⁴
 >
 > ¹ Faculty of Vocational Studies, Universitas Brawijaya, Malang, Indonesia  
-> ² Department of Information Technology, Jember State Polytechnic, Jember, Indonesia
+> ² Department of Information Technology, Jember State Polytechnic, Jember, Indonesia  
+> ³ ECE Department, Acharya Institute of Technology, India  
+> ⁴ Computer Engineering Department, Karabük University, Turkey
 >
 > *Journal of Robotics and Control (JRC), 2026*
 
