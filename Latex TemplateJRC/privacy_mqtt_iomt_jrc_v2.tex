@@ -144,6 +144,13 @@ Our system introduces a Topic and ID Privacy Manager (TPM) component at the IoMT
     \item \textbf{Backend Subscriber}: Consumes data via pseudo-topics, maintains reverse mappings through secure control channel
 \end{enumerate}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{figure_4_1_architecture.png}
+\caption{Privacy-aware MQTT architecture for IoMT. The Topic and ID Privacy Manager (TPM) at the gateway transforms semantic topics and static ClientIDs into rotating pseudonyms, preventing patient profiling by untrusted brokers.}
+\label{fig:architecture}
+\end{figure}
+
 \subsection{Pseudonym Generation}
 
 \subsubsection{Pseudo-Topic Generation}
@@ -441,6 +448,20 @@ Packet Loss & 0\% & 0\% \\
 
 \textbf{Key Finding}: \textbf{Zero packet loss} across all experiments, validating the overlap phase mechanism. All latency percentiles remain well below the 100 ms clinical threshold.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{figure_4_4_latency_distribution.png}
+\caption{End-to-end latency distribution comparison. Privacy-enhanced protocol adds minimal overhead (0.02--0.07 ms) while maintaining all percentiles well below the 100 ms clinical threshold.}
+\label{fig:latency}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{figure_4_5_throughput_comparison.png}
+\caption{Throughput comparison across scales. Despite 45\% reduction, privacy-enhanced throughput (78,571 msg/s at N=10,000) exceeds typical IoMT requirements.}
+\label{fig:throughput}
+\end{figure}
+
 \subsection{Scalability Analysis}
 
 Table~\ref{tab:scalability} summarizes scalability characteristics:
@@ -460,6 +481,13 @@ Packet Loss & Constant (0\%) & 0\% \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{figure_scalability_projection.png}
+\caption{Scalability projection from 5 to 10,000 patients. Privacy metrics remain constant while overhead scales sub-linearly, demonstrating suitability for large hospital deployments.}
+\label{fig:scalability}
+\end{figure}
 
 \subsection{Comparison with Related Work}
 
@@ -536,7 +564,12 @@ measures adversary success in linking topics across epochs using statistical cor
 \textbf{Results across scales}: $N=10$: $L = 0.10$ (95\% CI: [0.08, 0.12]), matching $L_{\text{random}} = 0.10$; $N=100$: $L = 0.011$ (95\% CI: [0.008, 0.014]), matching $L_{\text{random}} = 0.01$; $N=1000$: $L = 0.0012$ (95\% CI: [0.0009, 0.0015]), matching $L_{\text{random}} = 0.001$.
 
 \textbf{Interpretation}: Cross-epoch linkability equals random guessing across all tested scales, confirming that PRF-generated pseudo-topics provide no statistical correlation signal for cross-epoch tracking.
-
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{figure_4_3_privacy_comparison.png}
+\caption{Privacy metrics comparison between baseline MQTT and privacy-enhanced protocol across different scales (N=100 to N=10,000). Topic diversity shows consistent 5.0$\times$ improvement.}
+\label{fig:privacy_comparison}
+\end{figure}
 \subsubsection{Topic Entropy}
 \begin{equation}
 H(T) = -\sum_{t \in T} p(t) \log_2 p(t)
