@@ -36,6 +36,9 @@ data/results/*
 # Trash folder
 trash/
 
+# LaTeX paper source (local only)
+Latex TemplateJRC/
+
 # Sensitive files
 *.pem
 *.key
